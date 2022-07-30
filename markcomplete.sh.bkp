@@ -1,0 +1,7 @@
+#!/bin/bash
+
+dir=$(pwd)
+cd ..
+mv $dir ${dir}_COMPLETED
+cd ${dir}_COMPLETED
+bash

@@ -1,0 +1,10 @@
+sudo apt update
+sudo apt install git
+git clone https://github.com/gnab/rtl8812au.git
+sudo dkms add ./rtl8812au
+sudo dkms build rtl8812au/4.2.2 (if you get an error saying ‘rtl8812au’ folder does not exist, then change rtl8812au to ‘8812au’)
+sudo dkms install rtl8812au/4.2.2 (if you get an error saying ‘rtl8812au’ folder does not exist, then change rtl8812au to ‘8812au’)
+
+4. Load the driver
+
+sudo modprobe rtl8812au (or 8812au if you get an error message saying rtl8812au does not exist)
