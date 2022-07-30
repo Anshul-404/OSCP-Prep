@@ -4,4 +4,4 @@ I'll use it in CTFs and during Certification exams ( Hopefully :p )
 
 
 
-![Alt text](smth.webp?raw=true "Title")
+![Alt text](drstrange.webp?raw=true "Title")
