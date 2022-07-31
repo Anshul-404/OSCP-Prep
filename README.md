@@ -6,7 +6,7 @@ Anshul, learning Cyber Security, pursuing my Computer Science degree.
 $whereis
 ---------
 
-India ¯\_(ツ)_/¯
+India  ¯\_(ツ)_/¯
 
 $id
 ---------
